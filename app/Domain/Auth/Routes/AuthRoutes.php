@@ -12,6 +12,9 @@ Route::prefix("v1")->group(function () {
             Route::post("check", [AuthController::class, "check"]);
             Route::put("atualizar-acesso", [AuthController::class, "atualizarAcesso"]);
             Route::post("logout", [AuthController::class, "logout"]);
+            Route::post("acessar-modulo", [AuthController::class, "acessarModulo"]);
         });
     });
+
+    Route::get("/sso/check", [AuthController::class, "SSOCheck"]);
 });

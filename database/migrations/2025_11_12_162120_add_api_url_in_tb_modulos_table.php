@@ -11,8 +11,8 @@ return new class () extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string("email")->change();
+        Schema::table('tb_modulos', function (Blueprint $table) {
+            $table->string("api_url")->after("url");
         });
     }
 
@@ -21,8 +21,8 @@ return new class () extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-         $table->string("email")->unique()->change();
+        Schema::table('tb_modulos', function (Blueprint $table) {
+            $table->dropColumn("api_url");
         });
     }
 };

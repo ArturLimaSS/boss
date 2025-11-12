@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Auth\UseCase\SSOCheckUseCaseInterface;
+use App\Domain\Usuario\UseCase\AcessarModuloUseCaseInterface;
 use App\Domain\Usuario\UseCase\AtualizarUsuarioUseCaseInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -75,12 +77,29 @@ class AuthController extends Controller
         }
     }
 
-    public function atualizarAcesso(Request $request){
+    public function atualizarAcesso(Request $request)
+    {
         return $this->useCase(
-            interfaceName: AtualizarUsuarioUseCaseInterface::class, 
-            dados: $request->all(), 
-            success_message: "Acesso atualizado com sucesso!", 
+            interfaceName: AtualizarUsuarioUseCaseInterface::class,
+            dados: $request->all(),
+            success_message: "Acesso atualizado com sucesso!",
             error_message: "Ocorreu um erro ao tentar atualizar o acesso. Entre em contato com o suporte!"
         );
+    }
+
+    public function acessarModulo(Request $request)
+    {
+        $array_request = $request->all();
+
+        $token = $request->bearerToken();
+
+        $array_request["token"] = $token;
+
+        return $this->useCase(AcessarModuloUseCaseInterface::class, $array_request);
+    }
+
+    public function SSOCheck(Request $request)
+    {
+        return $this->useCase(SSOCheckUseCaseInterface::class, $request->all());
     }
 }

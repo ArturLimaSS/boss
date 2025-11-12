@@ -28,5 +28,7 @@ class ModulosModel extends BaseModel
         "nome",
         "prefixo",
         "ativo",
+        "url",
+        "api_url",
     ];
 }

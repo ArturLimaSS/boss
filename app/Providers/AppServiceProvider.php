@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Domain\Auth\UseCase\AuthenticationUseCase;
 use App\Domain\Auth\UseCase\AuthenticationUseCaseInterface;
+use App\Domain\Auth\UseCase\SSOCheckUseCase;
+use App\Domain\Auth\UseCase\SSOCheckUseCaseInterface;
 use App\Domain\Inquilino\UseCase\CadastrarInquilinoUseCase;
 use App\Domain\Inquilino\UseCase\CadastrarInquilinoUseCaseInterface;
 use App\Domain\Inquilino\UseCase\ListarInquilinoPorModuloUseCase;
@@ -12,6 +14,8 @@ use App\Domain\Inquilino\UseCase\ListarInquilinoUseCase;
 use App\Domain\Inquilino\UseCase\ListarInquilinoUseCaseInterface;
 use App\Domain\Inquilino\UseCase\ListarModulosUseCase;
 use App\Domain\Inquilino\UseCase\ListarModulosUseCaseInterface;
+use App\Domain\Usuario\UseCase\AcessarModuloUseCase;
+use App\Domain\Usuario\UseCase\AcessarModuloUseCaseInterface;
 use App\Domain\Usuario\UseCase\AtualizarModulosUsuarioUseCase;
 use App\Domain\Usuario\UseCase\AtualizarModulosUsuarioUseCaseInterface;
 use App\Domain\Usuario\UseCase\AtualizarUsuarioUseCase;
@@ -42,6 +46,8 @@ class AppServiceProvider extends ServiceProvider
             ListarInquilinoPorModuloUseCaseInterface::class => ListarInquilinoPorModuloUseCase::class,
             ListarModulosUseCaseInterface::class            => ListarModulosUseCase::class,
             AtualizarModulosUsuarioUseCaseInterface::class  => AtualizarModulosUsuarioUseCase::class,
+            AcessarModuloUseCaseInterface::class            => AcessarModuloUseCase::class,
+            SSOCheckUseCaseInterface::class                 => SSOCheckUseCase::class,
 
             // Usuario
             CadastrarUsuarioUseCaseInterface::class     => CadastrarUsuarioUseCase::class,
