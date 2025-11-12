@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+class ModulosModel extends BaseModel
+{
+    use HasUuids;
+
+    /**
+       * Indica se a chave primária do modelo não é um inteiro auto-incrementável.
+       * Deve ser definido como false para UUIDs.
+       * @var bool
+       */
+    public $incrementing = false;
+
+    /**
+     * O tipo de dado da chave primária.
+     * Deve ser definido como 'string' para UUIDs.
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    protected $table = 'tb_modulos';
+
+    protected $fillable = [
+        "nome",
+        "prefixo",
+        "ativo",
+    ];
+}

@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class () extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tb_inquilino', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string("nome");
+            $table->string("cnpj")->unique();
+            $table->string("telefone")->nullable();
+            $table->string("email")->nullable();
+            $table->string("cep")->nullable();
+            $table->string("rua")->nullable();
+            $table->string("numero")->nullable();
+            $table->string("bairro")->nullable();
+            $table->string("cidade")->nullable();
+            $table->string("uf")->nullable();
+            $table->string("pais")->nullable();
+            $table->boolean("ativo")->default(true);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('tb_inquilino');
+    }
+};
